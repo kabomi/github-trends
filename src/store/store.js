@@ -18,13 +18,14 @@ const state = {
 const mutations = {
   setRepositories (state, items) {
     state.items = items.map(({
-      name, owner: { login },
+      name, owner: { login, avatar_url },
       watchers, open_issues,
       url, stargazers_count
     }) => {
       return {
         name: name,
         user: login,
+        avatar: avatar_url,
         watchers: watchers,
         open_issues: open_issues,
         url: url,

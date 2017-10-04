@@ -8,9 +8,9 @@ Repository List View:
 - Component:
   ✔ Paint a list of repos: (17-10-05 00:43)
     ✔ Shows title, short desc (17-10-05 00:43)
-    ☐ Shows image
+    ✔ Shows image (17-10-05 00:54)
     ✔ Number of stars (17-10-05 00:43)
-    ☐ It is clickable with route to Repo view
+    ✔ It is clickable with route to Repo view (17-10-05 01:14)
 
 Repository View:
  ☐ Generate Repo component
