@@ -1,0 +1,45 @@
+Repository List View:
+☐ Generate view with vue-cli if possible
+☐ Generate RepoList component
+- View:
+  ☐ Fetchs data from (7 days from now):
+    - curl -G https://api.github.com/search/repositories --data-urlencode "sort=stars" --data-urlencode "order=desc" --data-urlencode "q=language:java"  --data-urlencode "q=created:>2017-09-27"
+  ☐ Uses vuex to manage state
+- Component:
+  ☐ Paint a list of repos:
+    ☐ Shows title, short desc
+    ☐ Shows image
+    ☐ Number of stars
+    ☐ It is clickable with route to Repo view
+
+Repository View:
+ ☐ Generate Repo component
+   ☐ Owner Info
+   ☐ Open Issues (Number)
+     ☐ Clickable: shows Issues Component
+ ☐ Generate Issues component
+ - Repo component
+   ☐ Shows more content
+ - Issues component
+   - E.g.:https://api.github.com/repos/[user]/[repo]/issues
+   ☐ List of issues
+     ☐ Items shows Title, issue number and status
+     ☐ Collapsed
+     ☐ Can be expanded
+     ☐ Manage empty list
+
+Responsiveness:
+  ✘ muse-ui (17-10-04 22:14)
+  ✔ bootstrap (17-10-04 22:14)
+
+
+Improvements:
+  ☐ Select custom date for fetching trending repos (Repo list view)
+  ☐ Filter repos by language (Java, c#...) (Repo list view)
+  ☐ Suggest similar repos as the one selected (Repo view)
+  ☐ Animations
+  ☐ User view (User view)
+    - https://api.github.com/users/[user]
+    ☐ General Info
+    ☐ List Repos (Reuse Repo List component)
+      ☐ Show selected Repo (Reuse Repository View)
