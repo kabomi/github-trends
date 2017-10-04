@@ -2,7 +2,7 @@
   <div>
     <b-table :sort-by.sync="sortBy"
              :sort-desc.sync="sortDesc"
-             :items="items"
+             :items="$store.state.items"
              :fields="fields">
     </b-table>
   </div>
@@ -15,16 +15,12 @@
         sortBy: 'age',
         sortDesc: false,
         fields: [
-          { key: 'last_name', sortable: true },
-          { key: 'first_name', sortable: true },
-          { key: 'age', sortable: true },
-          { key: 'isActive', sortable: false }
-        ],
-        items: [
-          { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-          { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-          { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-          { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
+          { key: 'name', sortable: true },
+          { key: 'user', sortable: true },
+          { key: 'url', sortable: false },
+          { key: 'watchers', sortable: true },
+          { key: 'stars', sortable: true },
+          { key: 'open_issues', sortable: true },
         ]
       }
     }

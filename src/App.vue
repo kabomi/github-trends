@@ -1,13 +1,37 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <b-alert :show="!!$store.error">{{ $store.error }}</b-alert>
+    <div v-if="!loading">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      loading: false
+    }
+  },
+  created () {
+    // fetch the data when the view is created and the data is
+    // already being observed
+    this.fetchData()
+  },
+  watch: {
+    // call again the method if the route changes
+    '$route': 'fetchData'
+  },
+  methods: {
+    fetchData () {
+      this.loading = true
+      this.$store.dispatch('fetchRepositories').finally(() => {
+        this.loading = false
+      })
+    }
+  }
 }
 </script>
 
