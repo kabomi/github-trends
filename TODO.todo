@@ -1,15 +1,15 @@
 Repository List View:
-☐ Generate view with vue-cli if possible
-☐ Generate RepoList component
+✘ Generate view with vue-cli if possible (17-10-05 00:43)
+✔ Generate RepoList component (17-10-05 00:43)
 - View:
-  ☐ Fetchs data from (7 days from now):
+  ✔ Fetchs data from (7 days from now): (17-10-05 00:43)
     - curl -G https://api.github.com/search/repositories --data-urlencode "sort=stars" --data-urlencode "order=desc" --data-urlencode "q=language:java"  --data-urlencode "q=created:>2017-09-27"
-  ☐ Uses vuex to manage state
+  ✔ Uses vuex to manage state (17-10-05 00:43)
 - Component:
-  ☐ Paint a list of repos:
-    ☐ Shows title, short desc
+  ✔ Paint a list of repos: (17-10-05 00:43)
+    ✔ Shows title, short desc (17-10-05 00:43)
     ☐ Shows image
-    ☐ Number of stars
+    ✔ Number of stars (17-10-05 00:43)
     ☐ It is clickable with route to Repo view
 
 Repository View:
