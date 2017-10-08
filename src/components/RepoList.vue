@@ -14,6 +14,7 @@
           :src="row.value"/>
       </template>
     </b-table>
+    <router-view class="nested-child"></router-view>
   </div>
 </template>
 
@@ -35,8 +36,8 @@
 			}
 		},
 		methods: {
-			onSelectRepo ({ name }) {
-				this.$router.push({ name: 'repo', params: { name } })
+			onSelectRepo (repo) {
+				this.$router.push({ name: 'repo', params: { name: repo.name } })
 			}
 		}
 	}
