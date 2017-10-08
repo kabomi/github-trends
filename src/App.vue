@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-alert :show="!!$store.error">{{ $store.error }}</b-alert>
+    <b-alert :show="!!$store.state.error">{{ $store.state.error }}</b-alert>
     <div v-if="!loading">
       <router-view></router-view>
     </div>
