@@ -1,12 +1,13 @@
 <template>
   <div>
     <b-table
+    		v-if="showList"
         hover
         show-empty
         @row-clicked="onSelectRepo"
         :sort-by.sync="sortBy"
         :sort-desc.sync="sortDesc"
-        :items="$store.state.items"
+        :items="items"
         :fields="fields">
       <template slot="avatar" scope="row">
         <b-img rounded width="25"
@@ -14,7 +15,11 @@
           :src="row.value"/>
       </template>
     </b-table>
-    <router-view class="nested-child"></router-view>
+    <transition>
+	    <router-view
+	    	class="nested-child"
+	    	@init="hideList"></router-view>
+	  </transition>
   </div>
 </template>
 
@@ -22,6 +27,7 @@
 	export default {
 		data () {
 			return {
+				showList: true,
 				sortBy: 'age',
 				sortDesc: false,
 				fields: [
@@ -35,10 +41,18 @@
 				]
 			}
 		},
+		computed: {
+			items() {
+				return this.$store.state.items
+			}
+		},
 		methods: {
 			onSelectRepo (repo) {
 				this.$router.push({ name: 'repo', params: { name: repo.name } })
+			},
+			hideList() {
+				this.$data.showList = false
 			}
-		}
+		},
 	}
 </script>

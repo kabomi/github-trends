@@ -9,6 +9,7 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
+			alias: '/repo',
 			name: 'repositories',
 			component: RepoList,
 			children: [
