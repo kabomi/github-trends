@@ -7,13 +7,12 @@ import RepoListData from './RepoList'
 
 
 describe('Store', () => {
-	let store, initialState, state, mutations, storeOptions
+	let store, state, mutations, storeOptions
 
 	beforeAll(() => {
 		const storeOptionsInjector = require('inject-loader!../../../src/store')
 		// create the module with our mocks
 		storeOptions = storeOptionsInjector({})
-		initialState = immutable(storeOptions.state)
 		// storeOptions = storeOptionsInjector({
 		// 	'./actions': {
 		// 		fetchRepositories () {
@@ -25,14 +24,13 @@ describe('Store', () => {
 
 	beforeEach(() => {
 		store = new Vuex.Store(storeOptions)
-		store.replaceState(immutable(initialState))
 		state = store.state
 		mutations = storeOptions.mutations
-
 	})
 
 	afterEach(() => {
 		fetchMock.restore()
+		mutations.reset(state)
 	})
 
 	describe('Mutations', () => {
@@ -47,6 +45,17 @@ describe('Store', () => {
 			})
 			mutations.setRepositories(state, immutable(RepoListData.items))
 			expect(state.items).toContain(expectedState)
+		})
+		it('resets state', ()=>{
+			state.error = 'something'
+			state.items = ['something']
+
+			mutations.reset(state)
+
+			expect(state).toEqual({
+				error: '',
+				items: []
+			})
 		})
 	})
 

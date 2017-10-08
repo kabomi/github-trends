@@ -20,5 +20,9 @@ export default {
         stars: stargazers_count
       }
     })
+  },
+  reset(state) {
+    state.error = ''
+    state.items = []
   }
 }

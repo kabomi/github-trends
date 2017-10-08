@@ -14,23 +14,18 @@ Vue.use(BootstrapVue)
 
 
 describe('RepoList', () => {
-	let vm, component, store, storeOptions
+	let vm, component, store, mutations, state, storeOptions
 
 	beforeAll(() => {
 		const storeOptionsInjector = require('inject-loader!../../../src/store')
 		// create the module with our mocks
 		storeOptions = storeOptionsInjector({});
-		// storeOptions = storeOptionsInjector({
-		// 	'./actions': {
-		// 		fetchRepositories () {
-		// 			return getResolvedPromise({ name: 'test' })
-		// 		}
-		// 	}
-		// })
 	})
 
 	beforeEach((done) => {
 		store = new Vuex.Store(storeOptions)
+    state = store.state
+    mutations = storeOptions.mutations
 		vm = new Vue({
 			template: '<div><test></test></div>',
 			store: store,
@@ -50,6 +45,7 @@ describe('RepoList', () => {
 
 	afterEach(() => {
 		fetchMock.restore()
+    mutations.reset(state)
 	})
 
 	it('should render correct contents', () => {
