@@ -32,7 +32,7 @@ describe('Store', () => {
 				name: jasmine.any(String),
 				user: jasmine.any(String),
 				avatar: jasmine.any(String),
-				watchers: jasmine.any(Number),
+				forks: jasmine.any(Number),
 				stars: jasmine.any(Number),
 				open_issues: jasmine.any(Number),
 			})

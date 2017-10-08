@@ -7,7 +7,7 @@ export default {
 	setRepositories (state, items) {
 		state.items = items.map(({
 			name, description, owner: { login, avatar_url },
-			watchers, open_issues,
+			forks, open_issues,
 			url, stargazers_count
 		}) => {
 			return {
@@ -15,7 +15,7 @@ export default {
 				description: description,
 				user: login,
 				avatar: avatar_url,
-				watchers: watchers,
+				forks: forks,
 				open_issues: open_issues,
 				url: url,
 				stars: stargazers_count

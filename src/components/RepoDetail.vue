@@ -27,10 +27,10 @@
         <b-list-group-item>
         	<b-row>
         		<b-col align="end">
-        			Watchers
+        			Forks
         		</b-col>
         		<b-col align="start">
-        			<b-badge pill>{{ repo ? repo.watchers : '' }}</b-badge>
+        			<b-badge pill>{{ repo ? repo.forks : '' }}</b-badge>
         		</b-col>
         	</b-row>
         </b-list-group-item>

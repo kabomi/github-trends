@@ -35,7 +35,7 @@
 					{ key: 'user', sortable: true },
 					{ key: 'avatar', sortable: false },
 					{ key: 'url', sortable: false },
-					{ key: 'watchers', sortable: true },
+					{ key: 'forks', sortable: true },
 					{ key: 'stars', sortable: true },
 					{ key: 'open_issues', sortable: true },
 				]
