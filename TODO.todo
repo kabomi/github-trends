@@ -14,8 +14,8 @@ Repository List View:
 
 Repository View:
  ☐ Generate Repo component
-   ☐ Owner Info
-   ☐ Open Issues (Number)
+   ✔ Owner Info (17-10-09 01:22)
+   ✔ Open Issues (Number) (17-10-09 01:22)
      ☐ Clickable: shows Issues Component
  ☐ Generate Issues component
  - Repo component

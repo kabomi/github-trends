@@ -3,5 +3,6 @@
 
 export default {
 	error: '',
+	selectedRepo: null,
 	items: []
 }

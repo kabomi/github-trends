@@ -47,7 +47,8 @@ describe('Store', () => {
 
 			expect(state).toEqual({
 				error: '',
-				items: []
+				items: [],
+				selectedRepo: null
 			})
 		})
 	})

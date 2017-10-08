@@ -25,6 +25,9 @@ const actions = {
 			})
 		})
 	},
+	selectRepo({ commit }, repoName) {
+		commit('setSelectedRepo', repoName)
+	}
 }
 
 export default actions

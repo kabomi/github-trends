@@ -6,12 +6,13 @@
 export default {
 	setRepositories (state, items) {
 		state.items = items.map(({
-			name, owner: { login, avatar_url },
+			name, description, owner: { login, avatar_url },
 			watchers, open_issues,
 			url, stargazers_count
 		}) => {
 			return {
 				name: name,
+				description: description,
 				user: login,
 				avatar: avatar_url,
 				watchers: watchers,
@@ -20,6 +21,9 @@ export default {
 				stars: stargazers_count
 			}
 		})
+	},
+	setSelectedRepo (state, repoName) {
+		state.selectedRepo = state.items.filter((repo) => repo.name === repoName)[0]
 	},
 	setError (state, error) {
 		state.error = 'There has been a problem: ' + error.message
