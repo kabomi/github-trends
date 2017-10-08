@@ -4,25 +4,25 @@
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 export default {
-  setRepositories (state, items) {
-    state.items = items.map(({
-      name, owner: { login, avatar_url },
-      watchers, open_issues,
-      url, stargazers_count
-    }) => {
-      return {
-        name: name,
-        user: login,
-        avatar: avatar_url,
-        watchers: watchers,
-        open_issues: open_issues,
-        url: url,
-        stars: stargazers_count
-      }
-    })
-  },
-  reset(state) {
-    state.error = ''
-    state.items = []
-  }
+	setRepositories (state, items) {
+		state.items = items.map(({
+			name, owner: { login, avatar_url },
+			watchers, open_issues,
+			url, stargazers_count
+		}) => {
+			return {
+				name: name,
+				user: login,
+				avatar: avatar_url,
+				watchers: watchers,
+				open_issues: open_issues,
+				url: url,
+				stars: stargazers_count
+			}
+		})
+	},
+	reset(state) {
+		state.error = ''
+		state.items = []
+	}
 }

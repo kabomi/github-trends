@@ -10,10 +10,10 @@ Vue.use(Vuex)
 // A Vuex instance is created by combining the state, mutations, actions,
 // and getters.
 const store = new Vuex.Store({
-  state,
-  getters,
-  actions,
-  mutations
+	state,
+	getters,
+	actions,
+	mutations
 })
 
 export default store

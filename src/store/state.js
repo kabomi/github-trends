@@ -2,6 +2,6 @@
 // each Vuex instance is just a single state tree.
 
 export default {
-  error: '',
-  items: []
+	error: '',
+	items: []
 }
