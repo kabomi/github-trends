@@ -1,5 +1,4 @@
 {
-  "extends": ["eslint:recommended"],
   "parserOptions": { "ecmaVersion": 6 },
   "env": {
     "jasmine": true,
@@ -10,6 +9,7 @@
     "sinon": true
   },
   "rules": {
-    "no-console": 0
+    "no-console": 0,
+    "padded-blocks": 0
   }
 }

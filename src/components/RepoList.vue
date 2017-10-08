@@ -18,26 +18,26 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        sortBy: 'age',
-        sortDesc: false,
-        fields: [
-          { key: 'name', sortable: true },
-          { key: 'user', sortable: true },
-          { key: 'avatar', sortable: false },
-          { key: 'url', sortable: false },
-          { key: 'watchers', sortable: true },
-          { key: 'stars', sortable: true },
-          { key: 'open_issues', sortable: true },
-        ]
-      }
-    },
-    methods: {
-      onSelectRepo ({ name }) {
-        this.$router.push({ name: 'repo', params: { name } })
-      }
-    }
-  }
+	export default {
+		data () {
+			return {
+				sortBy: 'age',
+				sortDesc: false,
+				fields: [
+					{ key: 'name', sortable: true },
+					{ key: 'user', sortable: true },
+					{ key: 'avatar', sortable: false },
+					{ key: 'url', sortable: false },
+					{ key: 'watchers', sortable: true },
+					{ key: 'stars', sortable: true },
+					{ key: 'open_issues', sortable: true },
+				]
+			}
+		},
+		methods: {
+			onSelectRepo ({ name }) {
+				this.$router.push({ name: 'repo', params: { name } })
+			}
+		}
+	}
 </script>

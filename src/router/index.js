@@ -5,11 +5,11 @@ import RepoList from '@/components/RepoList'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'RepoList',
-      component: RepoList
-    }
-  ]
+	routes: [
+		{
+			path: '/',
+			name: 'RepoList',
+			component: RepoList
+		}
+	]
 })

@@ -19,13 +19,13 @@ describe('RepoList', () => {
 	beforeAll(() => {
 		const storeOptionsInjector = require('inject-loader!../../../src/store')
 		// create the module with our mocks
-		storeOptions = storeOptionsInjector({});
+		storeOptions = storeOptionsInjector({})
 	})
 
 	beforeEach((done) => {
 		store = new Vuex.Store(storeOptions)
-    state = store.state
-    mutations = storeOptions.mutations
+		state = store.state
+		mutations = storeOptions.mutations
 		vm = new Vue({
 			template: '<div><test></test></div>',
 			store: store,
@@ -38,14 +38,14 @@ describe('RepoList', () => {
 
 		fetchMock.mock(/.*/, immutable(RepoListData))
 
-		store.dispatch('fetchRepositories').finally((data) => {
+		store.dispatch('updateRepositories').finally((data) => {
 			done()
 		})
 	})
 
 	afterEach(() => {
 		fetchMock.restore()
-    mutations.reset(state)
+		mutations.reset(state)
 	})
 
 	it('should render correct contents', () => {

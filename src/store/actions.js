@@ -2,21 +2,29 @@
 // asynchronous operations.
 const actions = {
 
-  fetchRepositories ({ commit, state }) {
-    const trendingUrl = 'https://api.github.com/search/repositories?sort=stars&order=desc&q=language:javascript&q=created:>2017-09-27'
-    return fetch(trendingUrl).then((response) => {
-      if (response.ok) {
-        return response.json()
-      }
-      throw new Error('Network response was not ok.')
-    })
-    .then((data) => {
-      commit('setRepositories', data.items)
-    })
-    .catch((error) => {
-      state.error = 'There has been a problem: ' + error.message
-    })
-  },
+	updateRepositories ({ commit, state }) {
+		const trendingUrl = 'https://api.github.com/search/repositories?sort=stars&order=desc&q=language:javascript&q=created:>2017-09-27'
+		return new Promise((resolve, reject) => {
+			if (state.items.length > 0) {
+				// cached
+				return resolve()
+			}
+			fetch(trendingUrl).then((response) => {
+				if (response.ok) {
+					return response.json()
+				}
+				throw new Error('Network response was not ok.')
+			})
+			.then((data) => {
+				commit('setRepositories', data.items)
+				resolve()
+			})
+			.catch((error) => {
+				commit('setError', error)
+				resolve()
+			})
+		})
+	},
 }
 
 export default actions

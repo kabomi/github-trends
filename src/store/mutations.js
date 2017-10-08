@@ -21,6 +21,9 @@ export default {
 			}
 		})
 	},
+	setError (state, error) {
+		state.error = 'There has been a problem: ' + error.message
+	},
 	reset(state) {
 		state.error = ''
 		state.items = []

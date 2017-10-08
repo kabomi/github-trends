@@ -13,13 +13,6 @@ describe('Store', () => {
 		const storeOptionsInjector = require('inject-loader!../../../src/store')
 		// create the module with our mocks
 		storeOptions = storeOptionsInjector({})
-		// storeOptions = storeOptionsInjector({
-		// 	'./actions': {
-		// 		fetchRepositories () {
-		// 			return getResolvedPromise({ name: 'test' })
-		// 		}
-		// 	}
-		// })
 	})
 
 	beforeEach(() => {
@@ -34,8 +27,8 @@ describe('Store', () => {
 	})
 
 	describe('Mutations', () => {
-		it('updates repositories', ()=>{
-			const expectedState= jasmine.objectContaining({
+		it('updates repositories', () => {
+			const expectedState = jasmine.objectContaining({
 				name: jasmine.any(String),
 				user: jasmine.any(String),
 				avatar: jasmine.any(String),
@@ -46,7 +39,7 @@ describe('Store', () => {
 			mutations.setRepositories(state, immutable(RepoListData.items))
 			expect(state.items).toContain(expectedState)
 		})
-		it('resets state', ()=>{
+		it('resets state', () => {
 			state.error = 'something'
 			state.items = ['something']
 
@@ -60,12 +53,12 @@ describe('Store', () => {
 	})
 
 	describe('Actions', () => {
-		it('updates repositories', (done)=>{
+		it('updates repositories', (done) => {
 			fetchMock.mock(/.*/, immutable(RepoListData))
-			const expectedState= {}
+			const expectedState = {}
 			mutations.setRepositories(expectedState, immutable(RepoListData.items))
 
-			store.dispatch('fetchRepositories').finally((data) => {
+			store.dispatch('updateRepositories').finally((data) => {
 
 				expect(state.items).toEqual(expectedState.items)
 				expect(state.error).toBe('')
@@ -73,13 +66,13 @@ describe('Store', () => {
 			})
 		})
 
-		it('does not update repositories on error', (done)=>{
+		it('does not update repositories on error', (done) => {
 			fetchMock.mock(/.*/, 500)
-			const expectedState= {}
+			const expectedState = {}
 			mutations.setRepositories(expectedState, immutable(RepoListData.items))
 
 			expect(state.items.length).toBe(0)
-			store.dispatch('fetchRepositories').finally((data) => {
+			store.dispatch('updateRepositories').finally((data) => {
 
 				expect(state.items).toEqual([])
 				expect(state.error).not.toBe('')
