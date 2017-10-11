@@ -27,6 +27,9 @@ const actions = {
 	},
 	selectRepo({ commit }, repoName) {
 		commit('setSelectedRepo', repoName)
+	},
+	displayRepoList({ commit }, isVisible) {
+		commit('setRepoListVisibility', isVisible)
 	}
 }
 

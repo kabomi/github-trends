@@ -7,7 +7,7 @@ import RepoListData from './RepoList'
 
 
 describe('Store', () => {
-	let store, state, mutations, storeOptions
+	let store, state, mutations, getters, storeOptions
 
 	beforeAll(() => {
 		const storeOptionsInjector = require('inject-loader!../../../src/store')
@@ -19,6 +19,7 @@ describe('Store', () => {
 		store = new Vuex.Store(storeOptions)
 		state = store.state
 		mutations = storeOptions.mutations
+		getters = store.getters
 	})
 
 	afterEach(() => {
@@ -39,17 +40,28 @@ describe('Store', () => {
 			mutations.setRepositories(state, immutable(RepoListData.items))
 			expect(state.items).toContain(expectedState)
 		})
+		it('sets selected repo', () => {
+			state.items = [ { name: 'test' }, { name: 'test2' } ]
+
+			mutations.setSelectedRepo(state, 'test2')
+
+			expect(state).toEqual(jasmine.objectContaining({
+				error: '',
+				items: state.items,
+				selectedRepo: state.items[1]
+			}))
+		})
 		it('resets state', () => {
 			state.error = 'something'
 			state.items = ['something']
 
 			mutations.reset(state)
 
-			expect(state).toEqual({
+			expect(state).toEqual(jasmine.objectContaining({
 				error: '',
 				items: [],
 				selectedRepo: null
-			})
+			}))
 		})
 	})
 
@@ -79,6 +91,20 @@ describe('Store', () => {
 				expect(state.error).not.toBe('')
 				done()
 			})
+		})
+	})
+	describe('Getters', () => {
+		const selectedRepo = {
+			name: 'test',
+			user: 'user'
+		}
+		it('gets selected repo', () => {
+			state.selectedRepo = selectedRepo
+			expect(getters.selectedRepo()).toBe(state.selectedRepo)
+		})
+		it('gets repository url by name', () => {
+			state.selectedRepo = selectedRepo
+			expect(getters.repoUrl('repoName')).toEqual(`https://github.com/${selectedRepo.user}/repoName`)
 		})
 	})
 })

@@ -17,17 +17,18 @@
     </b-table>
     <transition>
 	    <router-view
-	    	class="nested-child"
-	    	@init="hideList"></router-view>
+	    	class="nested-child"></router-view>
 	  </transition>
   </div>
 </template>
 
 <script>
+	import { mapActions, mapGetters } from 'vuex'
+
 	export default {
 		data () {
 			return {
-				showList: true,
+
 				sortBy: 'age',
 				sortDesc: false,
 				fields: [
@@ -41,18 +42,33 @@
 				]
 			}
 		},
+		beforeRouteEnter (to, from, next) {
+			next((vm) => {
+				vm.displayRepoList(!to.params.name)
+			})
+		},
+		beforeRouteUpdate (to, from, next) {
+			this.displayRepoList(!to.params.name)
+			next()
+		},
 		computed: {
 			items() {
 				return this.$store.state.items
-			}
+			},
+			showList() {
+				return this.isRepoListVisible()
+			},
+			...mapGetters([
+				'isRepoListVisible',
+			])
 		},
 		methods: {
 			onSelectRepo (repo) {
 				this.$router.push({ name: 'repo', params: { name: repo.name } })
 			},
-			hideList() {
-				this.$data.showList = false
-			}
+			...mapActions([
+				'displayRepoList'
+			]),
 		},
 	}
 </script>

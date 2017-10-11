@@ -41,11 +41,17 @@
 	    	Open Issues <b-badge pill variant="warning">{{ repo.open_issues }}</b-badge>
 	    </b-button>
   	</b-card>
+
+  	<transition>
+	    <router-view
+	    	class="nested-child"></router-view>
+	  </transition>
+
   </div>
 </template>
 
 <script>
-	import { mapActions } from 'vuex'
+	import { mapActions, mapGetters } from 'vuex'
 	export default {
 		data() {
 			return {
@@ -54,12 +60,12 @@
 		},
 		beforeRouteEnter (to, from, next) {
 			next((vm) => {
-				vm.$data.routeName = to.params.name
-
-				vm.selectRepo(vm.name)
-
-				vm.$emit('init')
+				vm.initialize(to.params.name)
 			})
+		},
+		beforeRouteUpdate (to, from, next) {
+			this.initialize(to.params.name)
+			next()
 		},
 		computed: {
 			name() {
@@ -80,9 +86,13 @@
 			])
 		},
 		methods: {
+			initialize(repoName) {
+				this.$data.repoName = repoName
+				this.selectRepo(repoName)
+			},
 			...mapActions([
-				'selectRepo'
-			])
+				'selectRepo',
+			]),
 		}
 	}
 </script>
