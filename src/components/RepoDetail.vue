@@ -55,27 +55,30 @@
 	export default {
 		data() {
 			return {
-				repoName: ''
+				repoName: this.$route.params.name
 			}
 		},
 		beforeRouteEnter (to, from, next) {
 			next((vm) => {
-				vm.initialize(to.params.name)
+				vm.selectRepo(to.params.name)
+				if (!vm.selectedRepo()) {
+					vm.$router.push({name: 'repositories'})
+				}
 			})
 		},
 		beforeRouteUpdate (to, from, next) {
-			this.initialize(to.params.name)
+			this.selectRepo(to.params.name)
+			if (!this.selectedRepo()) {
+				this.$router.push({name: 'repositories'})
+			}
 			next()
 		},
 		computed: {
-			name() {
-				return this.repoName
-			},
 			repo() {
 				return this.selectedRepo()
 			},
 			url() {
-				return this.repoUrl(this.name)
+				return this.repoUrl(this.repoName)
 			},
 			issuesUrl() {
 				return `${this.url}/issues`
@@ -86,10 +89,6 @@
 			])
 		},
 		methods: {
-			initialize(repoName) {
-				this.$data.repoName = repoName
-				this.selectRepo(repoName)
-			},
 			...mapActions([
 				'selectRepo',
 			]),

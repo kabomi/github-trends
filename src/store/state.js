@@ -3,7 +3,6 @@
 
 export default {
 	error: '',
-	isRepoListVisible: true,
 	selectedRepo: null,
 	items: []
 }

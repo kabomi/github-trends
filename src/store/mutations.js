@@ -25,9 +25,6 @@ export default {
 	setSelectedRepo (state, repoName) {
 		state.selectedRepo = state.items.filter((repo) => repo.name === repoName)[0]
 	},
-	setRepoListVisibility (state, isVisible) {
-		state.isRepoListVisible = isVisible
-	},
 	setError (state, error) {
 		state.error = 'There has been a problem: ' + error.message
 	},

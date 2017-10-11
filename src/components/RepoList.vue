@@ -23,12 +23,11 @@
 </template>
 
 <script>
-	import { mapActions, mapGetters } from 'vuex'
 
 	export default {
 		data () {
 			return {
-
+				showList: !this.$route.params.name,
 				sortBy: 'age',
 				sortDesc: false,
 				fields: [
@@ -42,33 +41,15 @@
 				]
 			}
 		},
-		beforeRouteEnter (to, from, next) {
-			next((vm) => {
-				vm.displayRepoList(!to.params.name)
-			})
-		},
-		beforeRouteUpdate (to, from, next) {
-			this.displayRepoList(!to.params.name)
-			next()
-		},
 		computed: {
 			items() {
 				return this.$store.state.items
 			},
-			showList() {
-				return this.isRepoListVisible()
-			},
-			...mapGetters([
-				'isRepoListVisible',
-			])
 		},
 		methods: {
 			onSelectRepo (repo) {
 				this.$router.push({ name: 'repo', params: { name: repo.name } })
 			},
-			...mapActions([
-				'displayRepoList'
-			]),
 		},
 	}
 </script>
