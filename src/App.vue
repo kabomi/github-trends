@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <b-alert class="msgBox" :show="!!error">{{ error }}</b-alert>
-    <div v-if="!loading">
+    <div v-if="ready">
       <router-view></router-view>
     </div>
   </div>
@@ -28,14 +28,17 @@ export default {
 	computed: {
 		error() {
 			return this.$store.state.error
+		},
+		ready() {
+			return !this.loading
 		}
 	},
 	methods: {
 		fetchData () {
-			this.$data.loading = true
+			this.loading = true
 
 			this.updateRepositories().then((response) => {
-				this.$data.loading = false
+				this.loading = false
 			})
 		},
 		...mapActions([

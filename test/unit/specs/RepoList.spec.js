@@ -51,7 +51,7 @@ describe('RepoList', () => {
 	it('should render correct contents', () => {
 		const tableElement = component.$el.querySelector('table')
 		expect(tableElement)
-			.toBeDefined()
+			.not.toBe(null)
 		expect(tableElement.querySelectorAll('tbody tr').length)
 			.toBe(RepoListData.items.length)
 	})
