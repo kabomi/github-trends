@@ -102,9 +102,9 @@ describe('Store', () => {
 			state.selectedRepo = selectedRepo
 			expect(getters.selectedRepo()).toBe(state.selectedRepo)
 		})
-		it('gets repository url by name', () => {
+		it('gets repository url', () => {
 			state.selectedRepo = selectedRepo
-			expect(getters.repoUrl('repoName')).toEqual(`https://github.com/${selectedRepo.user}/repoName`)
+			expect(getters.repoUrl()).toEqual(`https://github.com/${selectedRepo.user}/${selectedRepo.name}`)
 		})
 	})
 })

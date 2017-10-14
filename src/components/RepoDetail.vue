@@ -1,5 +1,4 @@
 <template>
-
   <div v-if="repo" class="text-center">
   	<b-card :title="repo.name"
   			:img-src="repo.avatar"
@@ -37,7 +36,7 @@
         </b-list-group-item>
       </b-list-group>
       <p class="text-card"></p>
-	    <b-button id="issuesButton" :to="{ name: 'issues'}">
+	    <b-button id="issuesButton" :to="{ name: 'issues' }">
 	    	Open Issues <b-badge pill variant="warning">{{ repo.open_issues }}</b-badge>
 	    </b-button>
   	</b-card>
@@ -78,7 +77,7 @@
 				return this.selectedRepo()
 			},
 			url() {
-				return this.repoUrl(this.repoName)
+				return this.repoUrl()
 			},
 			issuesUrl() {
 				return `${this.url}/issues`
@@ -92,6 +91,7 @@
 			...mapActions([
 				'selectRepo',
 			]),
+
 		}
 	}
 </script>

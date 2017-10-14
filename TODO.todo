@@ -16,10 +16,10 @@ Repository View:
  ☐ Generate Repo component
    ✔ Owner Info (17-10-09 01:22)
    ✔ Open Issues (Number) (17-10-09 01:22)
-     ☐ Clickable: shows Issues Component
- ☐ Generate Issues component
+     ✔ Clickable: shows Issues Component (17-10-11 21:38)
+ ✔ Generate Issues component (17-10-11 21:39)
  - Repo component
-   ☐ Shows more content
+   ✔ Shows more content (17-10-11 21:39)
  - Issues component
    - E.g.:https://api.github.com/repos/[user]/[repo]/issues
    ☐ List of issues
