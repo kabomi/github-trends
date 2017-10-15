@@ -3,7 +3,12 @@
 const actions = {
 
 	updateRepositories ({ commit, state }) {
-		const trendingUrl = 'https://api.github.com/search/repositories?sort=stars&order=desc&q=language:javascript&q=created:>2017-09-27'
+		const nDays = 7
+		const dateNDaysAgo = new Date(new Date().getTime() - (nDays * 24 * 60 * 60 * 1000))
+			.toISOString('YYYY-MM-DD').split('T')[0]
+		const reposUrl = 'https://api.github.com/search/repositories'
+		const queryString = `sort=stars&order=desc&q=language:javascript&q=created:>${dateNDaysAgo}`
+		const trendingUrl = `${reposUrl}?${queryString}`
 		return new Promise((resolve, reject) => {
 			if (state.items.length > 0) {
 				// cached
@@ -28,7 +33,8 @@ const actions = {
 		})
 	},
 	updateIssues ({ commit, state }) {
-		const issuesUrl = 'https://api.github.com/repos/asciimoo/colly/issues'
+		const repo = state.selectedRepo
+		const issuesUrl = `https://api.github.com/repos/${repo.user}/${repo.name}/issues`
 		return new Promise((resolve, reject) => {
 			fetch(issuesUrl).then((response) => {
 				if (response.ok) {
@@ -41,7 +47,6 @@ const actions = {
 				resolve()
 			})
 			.catch((error) => {
-				console.log('harry petas', error)
 				commit('setIssues', [])
 				commit('setError', error)
 				resolve()

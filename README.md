@@ -1,6 +1,8 @@
 # github-trends
 
-> A Vue.js project
+> Vuejs example with unit tests starting from an empty vue-cli project.
+> It shows a list of github trending repos from the last 7 days.
+> A different view will show the list of issues of a selected repo.
 
 ## Build Setup
 

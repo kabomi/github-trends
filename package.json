@@ -1,8 +1,8 @@
 {
   "name": "github-trends",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Imobach Martin <imobach.martin@sap.com>",
+  "description": "Vuejs example with unit tests starting from an empty vue-cli project",
+  "author": "Imobach Martin <kabomi@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

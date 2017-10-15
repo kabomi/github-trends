@@ -73,6 +73,7 @@ describe('Store', () => {
 
 			expect(state).toEqual(jasmine.objectContaining({
 				error: '',
+				issues: [],
 				items: [],
 				selectedRepo: null
 			}))
@@ -108,6 +109,7 @@ describe('Store', () => {
 		it('update issues', (done) => {
 			fetchMock.mock(/.*/, immutable(RepoIssuesData))
 			const expectedState = {}
+			state.selectedRepo = { name: 'test', user: 'test' }
 			mutations.setIssues(expectedState, immutable(RepoIssuesData))
 
 			store.dispatch('updateIssues').finally((data) => {
@@ -120,6 +122,7 @@ describe('Store', () => {
 
 		it('does not update issues on error', (done) => {
 			fetchMock.mock(/.*/, 500)
+			state.selectedRepo = { name: 'test', user: 'test' }
 			mutations.setIssues(state, immutable(RepoIssuesData))
 
 			store.dispatch('updateIssues').finally((data) => {

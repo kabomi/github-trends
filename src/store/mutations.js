@@ -49,6 +49,7 @@ export default {
 	reset(state) {
 		state.error = ''
 		state.items = []
+		state.issues = []
 		state.selectedRepo = null
 	}
 }
