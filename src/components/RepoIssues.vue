@@ -64,7 +64,7 @@
 		},
 		computed: {
 			issues() {
-				return this.repoIssues()
+				return this.$store.state.issues
 			},
 			ready() {
 				return !this.loading
