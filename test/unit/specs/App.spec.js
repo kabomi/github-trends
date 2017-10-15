@@ -46,6 +46,14 @@ describe('App', () => {
 		})
 	})
 
+	it('fetchs data on initialization', () => {
+		spyOn(component, 'updateRepositories').and.callThrough()
+
+		component.fetchData()
+
+		expect(component.updateRepositories).toHaveBeenCalled()
+	})
+
 	it('should render correct contents', () => {
 		const mainElement = component.$el.querySelector('#app')
 		expect(mainElement)

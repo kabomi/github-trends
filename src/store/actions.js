@@ -9,6 +9,7 @@ const actions = {
 				// cached
 				return resolve()
 			}
+
 			fetch(trendingUrl).then((response) => {
 				if (response.ok) {
 					return response.json()
@@ -20,6 +21,28 @@ const actions = {
 				resolve()
 			})
 			.catch((error) => {
+				commit('setRepositories', [])
+				commit('setError', error)
+				resolve()
+			})
+		})
+	},
+	updateIssues ({ commit, state }) {
+		const issuesUrl = 'https://api.github.com/repos/asciimoo/colly/issues'
+		return new Promise((resolve, reject) => {
+			fetch(issuesUrl).then((response) => {
+				if (response.ok) {
+					return response.json()
+				}
+				throw new Error('Network response was not ok.')
+			})
+			.then((data) => {
+				commit('setIssues', data)
+				resolve()
+			})
+			.catch((error) => {
+				console.log('harry petas', error)
+				commit('setIssues', [])
 				commit('setError', error)
 				resolve()
 			})

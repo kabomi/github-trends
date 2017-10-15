@@ -13,7 +13,7 @@ Repository List View:
     ✔ It is clickable with route to Repo view (17-10-05 01:14)
 
 Repository View:
- ☐ Generate Repo component
+ ✔ Generate Repo component (17-10-15 02:06)
    ✔ Owner Info (17-10-09 01:22)
    ✔ Open Issues (Number) (17-10-09 01:22)
      ✔ Clickable: shows Issues Component (17-10-11 21:38)
@@ -22,11 +22,11 @@ Repository View:
    ✔ Shows more content (17-10-11 21:39)
  - Issues component
    - E.g.:https://api.github.com/repos/[user]/[repo]/issues
-   ☐ List of issues
-     ☐ Items shows Title, issue number and status
-     ☐ Collapsed
-     ☐ Can be expanded
-     ☐ Manage empty list
+   ✔ List of issues (17-10-15 02:05)
+     ✔ Items shows Title, issue number and status (17-10-15 02:05)
+     ✘ Collapsedc (17-10-15 02:06)
+     ✘ Can be expanded (17-10-15 02:06)
+     ✔ Manage empty list (17-10-15 02:05)
 
 Responsiveness:
   ✘ muse-ui (17-10-04 22:14)
@@ -37,7 +37,7 @@ Improvements:
   ☐ Select custom date for fetching trending repos (Repo list view)
   ☐ Filter repos by language (Java, c#...) (Repo list view)
   ☐ Suggest similar repos as the one selected (Repo view)
-  ☐ Animations
+  ✔ Animations (17-10-15 02:06)
   ☐ User view (User view)
     - https://api.github.com/users/[user]
     ☐ General Info

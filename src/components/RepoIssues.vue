@@ -1,9 +1,9 @@
 <template>
-	<b-modal id="modalDialog" v-model="show"
+	<b-modal id="modalDialog" size="lg" v-model="show"
 	@hidden="onHidden"
 	title="Issues" ok-only>
   	<b-table
-    		v-if="!loading"
+    		v-if="ready"
         hover
         show-empty
         @row-clicked="onSelectIssue"
@@ -13,22 +13,32 @@
         :fields="fields">
       <template slot="avatar" scope="data">
       	<a :href="getUserUrl(data.item)" v-b-tooltip :title="data.item.user">
-	        <b-img rounded width="25"
-	          height="25"  alt="img" class="m-1"
+	        <b-img rounded width="40"
+	          height="40"  alt="img" class="m-1"
 	          :src="data.value"/>
         </a>
       </template>
       <template slot="title" scope="data">
-      	<a :href="getIssueUrl(data.item)" v-b-tooltip :title="data.item.body">
+      	<a :href="getIssueUrl(data.item)">
 	        {{ data.value }}
         </a>
+      </template>
+      <template slot="body" scope="data">
+      	<p class="truncateH100" :title="data.item.body">
+	        {{ data.value }}
+        </p>
+      </template>
+      <template slot="comments" scope="data">
+      	<b-badge pill variant="success">
+	        {{ data.value }}
+        </b-badge>
       </template>
     </b-table>
   </b-modal>
 </template>
 
 <script>
-	import { mapGetters } from 'vuex'
+	import { mapActions, mapGetters } from 'vuex'
 
 	export default {
 		data () {
@@ -41,8 +51,9 @@
 				fields: [
 					{ key: 'number', sortable: true },
 					{ key: 'avatar', sortable: false },
-					{ key: 'title', sortable: false },
+					{ key: 'title', sortable: true, class: 'columnW200' },
 					{ key: 'body', sortable: false },
+					{ key: 'comments', sortable: true },
 				]
 			}
 		},
@@ -53,36 +64,51 @@
 		},
 		computed: {
 			issues() {
-				return [{ number: 0,
-					avatar: 'https://avatars3.githubusercontent.com/u/3832179?v=4',
-					title: 'Title',
-					body: 'blablablablalbalbabl'}]// this.$store.state.issues
+				return this.repoIssues()
+			},
+			ready() {
+				return !this.loading
 			},
 			...mapGetters([
 				'selectedRepo',
+				'repoIssues',
+				'issueAuthor',
+				'issueUrl'
 			])
 		},
 		methods: {
 			fetchData () {
-				// this.loading = true
+				this.loading = true
 
-				// this.updateRepositories().then((response) => {
-				// 	this.loading = false
-				// })
-			},
-			onSelectIssue (repo) {
-				// this.$router.push({ name: 'repo', params: { name: repo.name } })
+				this.updateIssues().then((response) => {
+					this.loading = false
+				})
 			},
 			getUserUrl(issue) {
-				console.log(issue)
-				return 'https://avatars3.githubusercontent.com/u/3832179?v=4'
+				return this.issueAuthor(issue)
 			},
 			getIssueUrl(issue) {
-				console.log(issue)
+				return this.issueUrl(issue)
 			},
 			onHidden (ev) {
 				this.$router.push({ name: 'repo', params: { name: this.selectedRepo().name } })
 			},
+			onSelectIssue(rowEvent) {
+			},
+			...mapActions([
+				'updateIssues'
+			])
 		},
 	}
 </script>
+
+<style>
+.columnW200 {
+	min-width: 200px
+}
+.truncateH100 {
+	overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 100px;
+}
+</style>

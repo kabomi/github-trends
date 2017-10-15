@@ -22,6 +22,24 @@ export default {
 			}
 		})
 	},
+	setIssues (state, items) {
+		state.issues = items.map(({
+			number, user: { login, avatar_url, url: user_url },
+			title, body,
+			url, comments
+		}) => {
+			return {
+				number: number,
+				title: title,
+				user: login,
+				user_url: user_url,
+				avatar: avatar_url,
+				body: body,
+				comments: comments,
+				url: url,
+			}
+		})
+	},
 	setSelectedRepo (state, repoName) {
 		state.selectedRepo = state.items.filter((repo) => repo.name === repoName)[0]
 	},

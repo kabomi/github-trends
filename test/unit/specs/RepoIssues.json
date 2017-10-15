@@ -1,0 +1,152 @@
+[
+  {
+    "url": "https://api.github.com/repos/asciimoo/colly/issues/10",
+    "repository_url": "https://api.github.com/repos/asciimoo/colly",
+    "labels_url": "https://api.github.com/repos/asciimoo/colly/issues/10/labels{/name}",
+    "comments_url": "https://api.github.com/repos/asciimoo/colly/issues/10/comments",
+    "events_url": "https://api.github.com/repos/asciimoo/colly/issues/10/events",
+    "html_url": "https://github.com/asciimoo/colly/pull/10",
+    "id": 263452976,
+    "number": 10,
+    "title": "OnError support, addresses #9",
+    "user": {
+      "login": "tampajohn",
+      "id": 3832179,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3832179?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tampajohn",
+      "html_url": "https://github.com/tampajohn",
+      "followers_url": "https://api.github.com/users/tampajohn/followers",
+      "following_url": "https://api.github.com/users/tampajohn/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tampajohn/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tampajohn/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tampajohn/subscriptions",
+      "organizations_url": "https://api.github.com/users/tampajohn/orgs",
+      "repos_url": "https://api.github.com/users/tampajohn/repos",
+      "events_url": "https://api.github.com/users/tampajohn/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tampajohn/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2017-10-06T13:50:57Z",
+    "updated_at": "2017-10-09T18:54:25Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/asciimoo/colly/pulls/10",
+      "html_url": "https://github.com/asciimoo/colly/pull/10",
+      "diff_url": "https://github.com/asciimoo/colly/pull/10.diff",
+      "patch_url": "https://github.com/asciimoo/colly/pull/10.patch"
+    },
+    "body": "Adding OnError support to address #9 , also closing res.Body via defer."
+  },
+  {
+    "url": "https://api.github.com/repos/asciimoo/colly/issues/9",
+    "repository_url": "https://api.github.com/repos/asciimoo/colly",
+    "labels_url": "https://api.github.com/repos/asciimoo/colly/issues/9/labels{/name}",
+    "comments_url": "https://api.github.com/repos/asciimoo/colly/issues/9/comments",
+    "events_url": "https://api.github.com/repos/asciimoo/colly/issues/9/events",
+    "html_url": "https://github.com/asciimoo/colly/issues/9",
+    "id": 263450815,
+    "number": 9,
+    "title": "Add some basic OnError support",
+    "user": {
+      "login": "tampajohn",
+      "id": 3832179,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3832179?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tampajohn",
+      "html_url": "https://github.com/tampajohn",
+      "followers_url": "https://api.github.com/users/tampajohn/followers",
+      "following_url": "https://api.github.com/users/tampajohn/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tampajohn/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tampajohn/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tampajohn/subscriptions",
+      "organizations_url": "https://api.github.com/users/tampajohn/orgs",
+      "repos_url": "https://api.github.com/users/tampajohn/repos",
+      "events_url": "https://api.github.com/users/tampajohn/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tampajohn/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2017-10-06T13:44:17Z",
+    "updated_at": "2017-10-06T13:44:17Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "Probably should break out OnRequestError/OnResponseError, but adding a basic OnError that receives the request, response, and error seems to make sense as a first pass.\r\n\r\nPull request on its way shortly"
+  },
+  {
+    "url": "https://api.github.com/repos/asciimoo/colly/issues/8",
+    "repository_url": "https://api.github.com/repos/asciimoo/colly",
+    "labels_url": "https://api.github.com/repos/asciimoo/colly/issues/8/labels{/name}",
+    "comments_url": "https://api.github.com/repos/asciimoo/colly/issues/8/comments",
+    "events_url": "https://api.github.com/repos/asciimoo/colly/issues/8/events",
+    "html_url": "https://github.com/asciimoo/colly/issues/8",
+    "id": 263435844,
+    "number": 8,
+    "title": "Multipart support",
+    "user": {
+      "login": "kawakami-o3",
+      "id": 944421,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/944421?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kawakami-o3",
+      "html_url": "https://github.com/kawakami-o3",
+      "followers_url": "https://api.github.com/users/kawakami-o3/followers",
+      "following_url": "https://api.github.com/users/kawakami-o3/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kawakami-o3/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kawakami-o3/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kawakami-o3/subscriptions",
+      "organizations_url": "https://api.github.com/users/kawakami-o3/orgs",
+      "repos_url": "https://api.github.com/users/kawakami-o3/repos",
+      "events_url": "https://api.github.com/users/kawakami-o3/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kawakami-o3/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 706481801,
+        "url": "https://api.github.com/repos/asciimoo/colly/labels/enhancement",
+        "name": "enhancement",
+        "color": "84b6eb",
+        "default": true
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2017-10-06T12:52:57Z",
+    "updated_at": "2017-10-06T13:40:26Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "Do you have any plan to support a multipart POST request?\r\nI will code this feature later."
+  }
+]
